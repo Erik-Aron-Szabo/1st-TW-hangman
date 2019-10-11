@@ -1,0 +1,50 @@
+import random
+
+
+answer = input("Unknown word =  ")
+
+blanks = list("_"*len(answer))
+
+
+
+
+health = 5
+
+
+
+'''for guess in set(answer):
+
+    print(",".join(blanks))
+
+print("_ "*len(answer))'''
+
+while health > -1 and not(blanks == answer):
+    print(blanks)
+    print("")
+    print(str(health))
+
+    guess = input("Guess a letter! ")
+
+    if guess in answer:
+        blanks = update_blanks(answer, blanks, guess)
+
+    else:
+        print("Wrong letter!")
+        health -= 1
+
+if health < 0:
+    print("You lost!\nThe word was: " + str(answer))
+
+else:
+    print("You won!\nThe word was: " + str(answer))
+
+def update_blanks(secret, cur_dash, rec_guess):
+    result = ""
+    for i in range(len(secret)):
+        if secret[i] == rec_guess:
+            result += rec_guess
+
+        else:
+            result += cur_dash[i]
+
+    return result
